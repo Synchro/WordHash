@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [7.4]
-        dependency-version: [prefer-lowest, prefer-stable]
+        dependency-version: [prefer-stable]
 
     name: Formats P${{ matrix.php }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
 
@@ -37,10 +37,5 @@ jobs:
     - name: Install Composer dependencies
       run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist
 
-    - name: Coding Style Checks
-      run: |
-           vendor/bin/rector process src --dry-run
-           vendor/bin/php-cs-fixer fix -v --dry-run
-
-    - name: Type Checks
-      run: vendor/bin/phpstan analyse --ansi
+    - name: Coding standards
+      run: php ./vendor/bin/phpcs
