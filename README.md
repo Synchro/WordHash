@@ -10,9 +10,9 @@ By Marcus Bointon ([@Synchro](https://github.com/Synchro)).
 
 [Hashes](https://en.wikipedia.org/wiki/Hash_function) are functions which map arbitrary-sized data into a fixed size value. They are effectively very large numbers that are usually presented as hexadecimal (e.g. `5d41402abc4b2a76b9719d911017c592`) or base-64 strings (e.g. `XUFAKrxLKna5cZ2REBfFkg`).
 
-While it's easy for a computer to spot differences between such random-looking strings, it's much harder for us humans. For example, it's difficult for you to tell whether `Mk3PAn3UowqTLEQfNlol6GsXPe+kuOWJSCU0cbgbcs8` and `Mk3PAn3UowqTLEQfNlo16GsXPe+kuOWJSCU0cbgbcs8` are the same simply by looking at them (they're not!). Sometimes you want a human-readable hash function that make differences more obvious, and that's what this library provides.
+While it's easy for a computer to spot differences between such random-looking strings, it's much harder for us humans. For example, it's difficult for you to tell whether `Mk3PAn3UowqTLEQfNlol6GsXPe+kuOWJSCU0cbgbcs8` and `Mk3PAn3UowqTLEQfNlo16GsXPe+kuOWJSCU0cbgbcs8` are the same simply by looking at them (they're not!). Sometimes you want a human-readable hash function that makes differences more obvious, and that's what this library provides.
 
-This library uses an SHA-512/256 hash truncated to 64 bits (by default), and maps it into words drawn from a dictionary of 4096 common English words (a random subset of [this dictionary](https://github.com/dolph/dictionary/blob/master/popular.txt)). The string `hello` produces a hash of `three-straps-solved-clutch-groove-abode`, and that's fairly easy for humans to tell apart from `three-straps-solved-lagoon-groove-abode`.
+This library uses a truncated SHA-512/256 hash, and maps it into words drawn from a dictionary of 4096 common English words (a random subset of [this dictionary](https://github.com/dolph/dictionary/blob/master/popular.txt)). The string `hello` produces a hash of `three-straps-solved-clutch-groove-abode`, and that's fairly easy for humans to tell apart from `three-straps-solved-lagoon-groove-abode`.
 
 Like all good hash functions, it produces wildly different output when presented with only very small differences in the input, so `hellp` produces `zlotys-south-remark-lier-rewind-accept`.
 
@@ -37,7 +37,7 @@ echo Hash::generate('hello!', 5, '_');
 boil_rife_crepe_trait_carted
 ```
 
-If you don't like the default words, or want to use emoji, HTML snippets or something else, you can provide your own dictionary, which must contain exactly 4096 **unique** return-delimited words (see the provided [`dictionary.txt`](https://github.com/Synchro/WordHash/blob/main/src/dictionary.txt) for reference). The words don't need to be in any particular order.
+If you don't like the default words, or want to use emoji, HTML snippets, a different language, or something else, you can provide your own dictionary. It must contain *exactly* 4096 **unique** return-delimited words (see the provided [`dictionary.txt`](https://github.com/Synchro/WordHash/blob/main/src/dictionary.txt) for reference). The words don't need to be in any particular order, though the provided one is sorted alphabetically.
 ```php
 Hash::loadDictionary('/path/to/my/dictionary.txt');
 ```
@@ -65,4 +65,4 @@ composer test:unit
 composer test
 ```
 
-**Skeleton PHP** was created by **[Nuno Maduro](https://twitter.com/enunomaduro)** under the **[MIT license](https://opensource.org/licenses/MIT)**.
+Project layout based on Skeleton PHP by [Nuno Maduro](https://twitter.com/enunomaduro) under the [MIT license](https://opensource.org/licenses/MIT).
