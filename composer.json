@@ -1,0 +1,59 @@
+{
+    "name": "synchro/wordhash",
+    "description": "A human-readable hash function",
+    "keywords": [
+        "php",
+        "hash",
+        "package"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcus Bointon",
+            "email": "marcus@synchromedia.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-hash": "*"
+    },
+    "require-dev": {
+        "ergebnis/phpstan-rules": "^0.15.2",
+        "migrify/config-transformer": "^0.3.46",
+        "pestphp/pest": "^0.3.6",
+        "phpcompatibility/php-compatibility": "^9.3.5",
+        "phpstan/phpstan": "^0.12.44",
+        "phpstan/phpstan-strict-rules": "^0.12.5",
+        "squizlabs/php_codesniffer": "^3.5.6",
+        "thecodingmachine/phpstan-strict-rules": "^0.12.1",
+        "vimeo/psalm": "^3.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Synchro\\WordHash\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "lint": "./vendor/bin/phpcs",
+        "test:lint": "./vendor/bin/phpcs",
+        "test:types": "./vendor/bin/phpstan analyse --ansi --memory-limit=0",
+        "test:unit": "./vendor/bin/pest --coverage --colors=always",
+        "test:psalm": "./vendor/bin/psalm --show-info=true",
+        "test": [
+            "@test:lint",
+            "@test:psalm",
+            "@test:unit"
+        ]
+    }
+}

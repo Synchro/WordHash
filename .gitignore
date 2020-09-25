@@ -1,0 +1,7 @@
+composer.lock
+/vendor/
+coverage.xml
+.phpunit.result.cache
+.phpcs-cache
+*.swp
+*.swo
