@@ -15,7 +15,7 @@ final class Hash
     /**
      * An array of words.
      *
-     * @var string[]
+     * @var array<string>
      */
     private static array $dictionary = [];
 
@@ -43,8 +43,7 @@ final class Hash
         //Split hash into 3-char chunks (because 16^3 = 4096)
         $chunks = str_split($hash, 3);
         foreach ($chunks as $chunk) {
-            $offset = (int)hexdec($chunk);
-            $words[] = trim(self::$dictionary[$offset]);
+            $words[] = trim(self::$dictionary[(int)hexdec($chunk)]);
         }
 
         return implode($separator, $words);
@@ -63,8 +62,8 @@ final class Hash
             if ($wordlist === false) {
                 throw new RuntimeException('Failed to read dictionary, or dictionary empty');
             }
-        } catch (ErrorException $e) {
-            throw new RuntimeException('Failed to read dictionary file', 0, $e);
+        } catch (ErrorException $exception) {
+            throw new RuntimeException('Failed to read dictionary file', 0, $exception);
         }
         self::$dictionary = $wordlist;
     }
