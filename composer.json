@@ -18,6 +18,7 @@
         "ext-hash": "*"
     },
     "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "ergebnis/phpstan-rules": "^0.15.2",
         "migrify/config-transformer": "^0.3.46",
         "pestphp/pest": "^0.3.6",
