@@ -22,6 +22,9 @@ You can choose how many words it generates (up to 21, equivalent to a 252-bit ha
 This is **not** intended for high-performance or cryptographic purposes; **do not hash your passwords with this function!**
 
 # Usage
+
+All methods are static, so there's no need to create an instance.
+
 The `generate()` method takes three parameters:
 
 * The string to hash (required)
@@ -29,8 +32,8 @@ The `generate()` method takes three parameters:
 * The separator to use between words (optional, defaults to `-`)
 
 ```php
-use Synchro\WordHash\Hash;
-echo Hash::generate('hello!', 5, '_');
+use Synchro\WordHash\WordHash;
+echo WordHash::generate('hello!', 5, '_');
 ```
 ## Example output
 ```
@@ -39,7 +42,7 @@ boil_rife_crepe_trait_carted
 
 If you don't like the default words, or want to use emoji, HTML snippets, a different language, or something else, you can provide your own dictionary. It must contain *exactly* 4096 **unique** return-delimited words (see the provided [`dictionary.txt`](https://github.com/Synchro/WordHash/blob/main/src/dictionary.txt) for reference). The words don't need to be in any particular order, though the provided one is sorted alphabetically.
 ```php
-Hash::loadDictionary('/path/to/my/dictionary.txt');
+WordHash::loadDictionary('/path/to/my/dictionary.txt');
 ```
 
 # Developer info

@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Synchro\WordHash;
 
 use ErrorException;
+use InvalidArgumentException;
 use RuntimeException;
 
 /**
- * Class Hash.
+ * Class WordHash.
  */
-final class Hash
+final class WordHash
 {
     /**
      * An array of words.
@@ -20,9 +21,13 @@ final class Hash
     private static array $dictionary = [];
 
     /**
+     * Generate a word-based hash.
+     *
      * @param string $text The input text to generate a hash for
      * @param int $wordcount The number of words to use in the hash output, between 1 and 21
      * @param string $separator An optional separator string to insert between words
+     *
+     * @return string
      */
     public static function generate(string $text, int $wordcount = 5, string $separator = '-'): string
     {
@@ -30,7 +35,7 @@ final class Hash
         if ($wordcount < 1 || $wordcount > 21) {
             //Each word consumes exactly 3 hex chars from the hash, which has 64 chars,
             //so the longest we can do is 21 words
-            throw new \InvalidArgumentException('$wordcount must be between 1 and 21');
+            throw new InvalidArgumentException('$wordcount must be between 1 and 21');
         }
 
         if (self::$dictionary === []) {
