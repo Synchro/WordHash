@@ -1,6 +1,6 @@
 {
     "name": "synchro/wordhash",
-    "description": "A human-readable hash function",
+    "description": "Generate hashes in a human-readable format",
     "keywords": [
         "php",
         "hash",
